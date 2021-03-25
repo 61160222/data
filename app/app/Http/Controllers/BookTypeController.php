@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class BookControllerw extends Controller
+class BookTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BookControllerw extends Controller
      */
     public function index()
     {
-       $book = DB::table('BookType')->get();
-       return view('booktype.index',compact('book'));
+       $booktype = DB::table('BookType')->get();
+       return view('booktype.index',compact('booktype'));
     }
 
     /**
@@ -37,12 +37,12 @@ class BookControllerw extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'BT_Code'=>'required',
-            'BT_Name'=>'required'
+            'BookTypeCode'=>'required',
+            'BookTypeName'=>'required'
         ]);
-        DB::table('Book')->insert([
-            'BT_Code'=>$request->BT_Code,
-            'BT_Name'=>$request->BT_Name
+        DB::table('BookType')->insert([
+            'BookTypeCode'=>$request->BookTypeCode,
+            'BookTypeName'=>$request->BookTypeName
         ]);
         return redirect('booktype');
     }
@@ -66,7 +66,7 @@ class BookControllerw extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('BookType')->where('BT_Code','=',$id)->get();
+        $booktype = DB::table('BookType')->where('BookTypeCode','=',$id)->get();
         return view('booktype.edit',compact('booktype'));
     }
 
@@ -80,12 +80,12 @@ class BookControllerw extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'BT_Code'=>'required',
-            'BT_Name'=>'required'
+            'BookTypeCode'=>'required',
+            'BookTypeName'=>'required'
         ]);
-        DB::table('BookType')->where('BT_Code','=',$id)->update([
-            'BT_Code'=>$request->BT_Code,
-            'BT_Name'=>$request->BT_Name
+        DB::table('BookType')->where('BookTypeCode','=',$id)->update([
+            'BookTypeCode'=>$request->BookTypeCode,
+            'BookTypeName'=>$request->BookTypeName
         ]);
             return redirect('booktype');
     }
@@ -98,7 +98,7 @@ class BookControllerw extends Controller
      */
     public function destroy($id)
     {
-        DB::table("BookType")->where('BT_Code',"=",$id)->delete();
+        DB::table("BookType")->where('BookTypeCode',"=",$id)->delete();
         return redirect('booktype');
     }
 }

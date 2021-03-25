@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class TransferControllerw extends Controller
+class TransferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,18 +37,18 @@ class TransferControllerw extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'OC_OrderID'=>'required',
-            'TF_Date'=>'required',
-            'TF_Bank'=>'required',
-            'TF_Branch'=>'required',
-            'TF_Amuont'=>'required'
+            'TransferOrder'=>'required',
+            'TransferDate'=>'required',
+            'BankName'=>'required',
+            'BankBranch'=>'required',
+            'TotalBalance'=>'required'
         ]);
         DB::table('Transfer')->insert([
-            'OC_OrderID'=>$request->OC_OrderID,
-            'TF_Date'=>$request->TF_Date,
-            'TF_Bank'=>$request->TF_Bank,
-            'TF_Branch'=>$request->TF_Branch,
-            'TF_Amuont'=>$request->TF_Amuont
+            'TransferOrder'=>$request->TransferOrder,
+            'TransferDate'=>$request->TransferDate,
+            'BankName'=>$request->BankName,
+            'BankBranch'=>$request->BankBranch,
+            'TotalBalance'=>$request->TotalBalance
         ]);
         return redirect('transfer');
     }
@@ -72,7 +72,7 @@ class TransferControllerw extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('Transfer')->where('OC_OrderID','=',$id)->get();
+        $account = DB::table('Transfer')->where('TransferOrder','=',$id)->get();
         return view('transfer.edit',compact('transfer'));
     }
 
@@ -86,18 +86,18 @@ class TransferControllerw extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'OC_OrderID'=>'required',
-            'TF_Date'=>'required',
-            'TF_Bank'=>'required',
-            'TF_Branch'=>'required',
-            'TF_Amuont'=>'required'
+            'TransferOrder'=>'required',
+            'TransferDate'=>'required',
+            'BankName'=>'required',
+            'BankBranch'=>'required',
+            'TotalBalance'=>'required'
         ]);
-        DB::table('Transfer')->where('OC_OrderID','=',$id)->update([
-            'OC_OrderID'=>$request->OC_OrderID,
-            'TF_Date'=>$request->TF_Date,
-            'TF_Bank'=>$request->TF_Bank,
-            'TF_Branch'=>$request->TF_Branch,
-            'TF_Amuont'=>$request->TF_Amuont
+        DB::table('Transfer')->where('TransferOrder','=',$id)->update([
+            'TransferOrder'=>$request->TransferOrder,
+            'TransferDate'=>$request->TransferDate,
+            'BankName'=>$request->BankName,
+            'BankBranch'=>$request->BankBranch,
+            'TotalBalance'=>$request->TotalBalance
         ]);
             return redirect('transfer');
     }
@@ -110,7 +110,7 @@ class TransferControllerw extends Controller
      */
     public function destroy($id)
     {
-        DB::table("Transfer")->where('OC_OrderID',"=",$id)->delete();
+        DB::table("Transfer")->where('TransferOrder',"=",$id)->delete();
         return redirect('transfer');
     }
 }

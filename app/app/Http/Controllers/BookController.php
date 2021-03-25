@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class BookControllerw extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,20 +37,22 @@ class BookControllerw extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'BT_Code'=>'required',
-            'BT_BTCode'=>'required',
-            'B_Details'=>'required',
-            'B_Stock'=>'required',
-            'B_Price'=>'required',
-            'B_Note'=>'required'
+            'BookCode'=>'required',
+            'BookName'=>'required',
+            'BookTypeCode'=>'required',
+            'BookPrice'=>'required',
+            'BookStock'=>'required',
+            'BooktAuthor'=>'required',
+            'BookNote'=>'required'
         ]);
         DB::table('Book')->insert([
-            'BT_Code'=>$request->BT_Code,
-            'BT_BTCode'=>$request->BT_BTCode,
-            'B_Details'=>$request->B_Details,
-            'B_Stock'=>$request->B_Stock,
-            'B_Price'=>$request->B_Price,
-            'B_Note'=>$request->B_Note
+            'BookCode'=>$request->BookCode,
+            'BookName'=>$request->BookName,
+            'BookTypeCode'=>$request->BookTypeCode,
+            'BookPrice'=>$request->BookPrice,
+            'BookStock'=>$request->BookStock,
+            'BooktAuthor'=>$request->BooktAuthor,
+            'BookNote'=>$request->BookNote
         ]);
         return redirect('book');
     }
@@ -74,7 +76,7 @@ class BookControllerw extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('Book')->where('BT_Code','=',$id)->get();
+        $book = DB::table('Book')->where('BookCode','=',$id)->get();
         return view('book.edit',compact('book'));
     }
 
@@ -88,20 +90,24 @@ class BookControllerw extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'BT_Code'=>'required',
-            'BT_BTCode'=>'required',
-            'B_Details'=>'required',
-            'B_Stock'=>'required',
-            'B_Price'=>'required',
-            'B_Note'=>'required'
+            'BookCode'=>'required',
+            'BookName'=>'required',
+            'BookTypeCode'=>'required',
+            'BookPrice'=>'required',
+            'BookStock'=>'required',
+            'BooktAuthor'=>'required',
+            'BookNote'=>'required'
+
         ]);
-        DB::table('Book')->where('BT_Code','=',$id)->update([
-            'BT_Code'=>$request->BT_Code,
-            'BT_BTCode'=>$request->BT_BTCode,
-            'B_Details'=>$request->B_Details,
-            'B_Stock'=>$request->B_Stock,
-            'B_Price'=>$request->B_Price,
-            'B_Note'=>$request->B_Note
+        DB::table('Book')->where('BookCode','=',$id)->update([
+            'BookCode'=>$request->BookCode,
+            'BookName'=>$request->BookName,
+            'BookTypeCode'=>$request->BookTypeCode,
+            'BookPrice'=>$request->BookPrice,
+            'BookStock'=>$request->BookStock,
+            'BooktAuthor'=>$request->BooktAuthor,
+            'BookNote'=>$request->BookNote
+
         ]);
             return redirect('book');
     }
@@ -114,7 +120,7 @@ class BookControllerw extends Controller
      */
     public function destroy($id)
     {
-        DB::table("Book")->where('BT_Code',"=",$id)->delete();
+        DB::table("Book")->where('BookCode',"=",$id)->delete();
         return redirect('book');
     }
 }

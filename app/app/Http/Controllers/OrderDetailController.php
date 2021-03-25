@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class OrderDetailControllerw extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,20 +37,16 @@ class OrderDetailControllerw extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'OC_IDOrder'=>'required',
-            'B_BookCode'=>'required',
-            'OD_NumberBook'=>'required',
-            'OD_ProducPrice'=>'required',
-            'OD_TotalPrice'=>'required',
-            'OD_Date'=>'required'
+            'OrderNumber'=>'required',
+            'TUnit'=>'required',
+            'TPrice'=>'required',
+            'DateOrder'=>'required',
         ]);
         DB::table('OrderDetail')->insert([
-            'OC_IDOrder'=>$request->OC_IDOrder,
-            'B_BookCode'=>$request->B_BookCode,
-            'OD_NumberBook'=>$request->OD_NumberBook,
-            'OD_ProducPrice'=>$request->OD_ProducPrice,
-            'OD_TotalPrice'=>$request->OD_TotalPrice,
-            'OD_Date'=>$request->OD_Date
+            'OrderNumber'=>$request->OrderNumber,
+            'TUnit'=>$request->TUnit,
+            'TPrice'=>$request->TPrice,
+            'DateOrder'=>$request->DateOrder
         ]);
         return redirect('orderdetail');
     }
@@ -74,7 +70,7 @@ class OrderDetailControllerw extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('OrderDetail')->where('OC_IDOrder','=',$id)->get();
+        $account = DB::table('OrderDetail')->where('OrderNumber','=',$id)->get();
         return view('orderdetail.edit',compact('orderdetail'));
     }
 
@@ -88,20 +84,16 @@ class OrderDetailControllerw extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'OC_IDOrder'=>'required',
-            'B_BookCode'=>'required',
-            'OD_NumberBook'=>'required',
-            'OD_ProducPrice'=>'required',
-            'OD_TotalPrice'=>'required',
-            'OD_Date'=>'required'
+            'OrderNumber'=>'required',
+            'TUnit'=>'required',
+            'TPrice'=>'required',
+            'DateOrder'=>'required',
         ]);
-        DB::table('OrderDetail')->where('OC_IDOrder','=',$id)->update([
-            'OC_IDOrder'=>$request->OC_IDOrder,
-            'B_BookCode'=>$request->B_BookCode,
-            'OD_NumberBook'=>$request->OD_NumberBook,
-            'OD_ProducPrice'=>$request->OD_ProducPrice,
-            'OD_TotalPrice'=>$request->OD_TotalPrice,
-            'OD_Date'=>$request->OD_Date
+        DB::table('OrderDetail')->where('OrderNumber','=',$id)->update([
+            'OrderNumber'=>$request->OrderNumber,
+            'TUnit'=>$request->TUnit,
+            'TPrice'=>$request->TPrice,
+            'DateOrder'=>$request->DateOrder
         ]);
             return redirect('orderdetail');
     }
@@ -114,7 +106,7 @@ class OrderDetailControllerw extends Controller
      */
     public function destroy($id)
     {
-        DB::table("OrderDetail")->where('OC_IDOrder',"=",$id)->delete();
+        DB::table("OrderDetail")->where('OrderNumber',"=",$id)->delete();
         return redirect('orderdetail');
     }
 }

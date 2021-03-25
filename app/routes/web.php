@@ -16,35 +16,33 @@ use Illuminate\Support\Facades\Route;
 Route::resource('book','BookController');
 Route::get('/', function () {
     return view('welcome');
-
-});Route::resource('BookTypeModel','BookTypeModelController');
+});
+Route::resource('booktype','BookTypeController');
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('bookType','BookTypeController');
+Route::resource('booktype','BookTypeController');
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::resource('member','MemberController');
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('orderConfirmation','OrderConfirmationController');
+Route::resource('order','OrderController');
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('orderDetail','OrderDetailController');
+Route::resource('orderdetail','OrderDetailController');
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('users','UsersController');
+Route::resource('transfer','TransferController');
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::resource('shopping','ShoppingController');
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/home', 'HomeController@index')->name('home');

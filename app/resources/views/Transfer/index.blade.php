@@ -12,15 +12,15 @@
                             <td>Date</td>
                             <td>Choose a bank</td>
                             <td>Branch</td>
-                            <td>Amuont</td>
+                            <td>Total balance</td>
                         </tr>
-                        @foreach($Transfer as $TF)
+                        @foreach($transfer as $TF)
                         <tr>
-                            <td>{{ $TF->OC_OrderID }}</td>
-                            <td>{{ $TF->TF_Date }}</td>
-                            <td>{{ $TF->TF_Bank }}</td>
-                            <td>{{ $TF->TF_Branch }}</td>
-                            <td>{{ $TF->TF_Amuont }}</td>
+                            <td>{{ $TF->TransferOrder }}</td>
+                            <td>{{ $TF->TransferDate }}</td>
+                            <td>{{ $TF->BankName }}</td>
+                            <td>{{ $TF->BankBranch }}</td>
+                            <td>{{ $TF->TotalBalance }}</td>
                         </tr>
                         @endforeach
                     </table>

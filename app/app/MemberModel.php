@@ -8,7 +8,6 @@ class MemberModel extends Model
 {
     protected $table="Member";
     protected $fillable=[
-    'Mem_ID','Mem_Username','Mem_Name','Mem_Address','Mem_BirthDate',
-    'Mem_Telphephon','Mem_Email','Mem_IDCard'
+    'Mem_ID','Username','Name','Address','BirthDate','Telphephon','Email','IDCard'
     ];
 }
