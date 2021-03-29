@@ -14,9 +14,7 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-       $shopping = DB::table('Shopping')
-        ->join('member','member.Mem_ID','=','Shopping.Mem_ID')
-        ->get();
+       $shopping = DB::table('Member')->get();
        return view('shopping.index',compact('shopping'));
     }
 
@@ -42,11 +40,8 @@ class ShoppingController extends Controller
             'Mem_ID'=>'required'
         ]);
         DB::table('Shopping')->insert([
-            'Mem_ID'=>$request->Mem_ID,
-            'Name'=>$request->Name,
-            'Address'=>$request->Address,
-            'Telphephon'=>$request->Telphephon,
-            'Email'=>$request->Email
+            'Mem_ID'=>$request->Mem_ID
+
         ]);
         return redirect('shopping');
     }
@@ -87,11 +82,8 @@ class ShoppingController extends Controller
             'Mem_ID'=>'required'
         ]);
         DB::table('Shopping')->where('Mem_ID','=',$id)->update([
-            'Mem_ID'=>$request->Mem_ID,
-            'Name'=>$request->Name,
-            'Address'=>$request->Address,
-            'Telphephon'=>$request->Telphephon,
-            'Email'=>$request->Email
+            'Mem_ID'=>$request->Mem_ID
+
         ]);
             return redirect('shopping');
     }

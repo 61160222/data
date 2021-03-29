@@ -19,7 +19,7 @@
                                 <td border=1> ID : </td>
                                 <td><input type=text name=Mem_ID style="width:500px;"></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td> Name : </td>
                                 <td><input type=text name=Name style="width:500px;"></td>
                             </tr>
@@ -36,7 +36,7 @@
                                 <td> Email : </td>
                                 <td><input type=text name=Email style="width:500px; ">
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr align="center">
                                 <td colspan=2>
                                     <button class="btn btn-primary" href="{{ route('shopping.index') }}">Cancel</button>

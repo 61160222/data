@@ -15,7 +15,7 @@
                     <br><br>
                     <div align="center">
                         <label for="page">Choose a page :</label>
-                        <select name="forma" onchange="location = this.value;">
+                        <select name="form" onchange="location = this.value;">
                             <option value="">- Choose -</option>
                             <option value="member">Member</option>
                             <option value="book">Book</option>
@@ -37,22 +37,25 @@
                         <br><br>
 
                         <tr align="center">
-                            <td width="50">ID</td>
                             <td width="150">OrderNumber</td>
-                            <td width="100">CodeBook</td>
+                            <td width="100">UserID</td>
+                            <td width="150">Username</td>
                             <td width="300">Product</td>
                             <td width="100">Price</td>
                             <td width="100">Unit</td>
+                            <td width="100">Total</td>
                             <td width="100">Operation</td>
                         </tr>
                         @foreach($order as $OR)
                         <tr align="center">
-                            <td>{{ $OR->Mem_ID }}</td>
                             <td>{{ $OR->OrderNumber }}</td>
-                            <td>{{ $OR->BookCode }}</td>
+                            <td>{{ $OR->Mem_ID }}</td>
+                            <td>{{ $OR->Username }}</td>
+
                             <td>{{ $OR->BookName }}</td>
                             <td>{{ $OR->BookPrice }}</td>
                             <td>{{ $OR->OrderUint }}</td>
+                            <td>{{ $OR->Total=($OR->BookPrice*$OR->OrderUint) }}</td>
                             <td>
                                 <form action="{{ route('order.destroy',$OR->OrderNumber) }}" method="POST">
                                     <a href="{{ route('order.edit',$OR->OrderNumber) }}"><i class='fas fa-edit'></i></a>

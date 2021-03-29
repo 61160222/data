@@ -38,11 +38,13 @@ class BookTypeController extends Controller
     {
         $request->validate([
             'BookTypeCode'=>'required',
-            'BookTypeName'=>'required'
+            'BookTypeName'=>'required',
+            'Rate'=>'required'
         ]);
         DB::table('BookType')->insert([
             'BookTypeCode'=>$request->BookTypeCode,
-            'BookTypeName'=>$request->BookTypeName
+            'BookTypeName'=>$request->BookTypeName,
+            'Rate'=>$request->Rate
         ]);
         return redirect('booktype');
     }
@@ -81,11 +83,13 @@ class BookTypeController extends Controller
     {
         $request->validate([
             'BookTypeCode'=>'required',
-            'BookTypeName'=>'required'
+            'BookTypeName'=>'required',
+            'Rate'=>'required'
         ]);
         DB::table('BookType')->where('BookTypeCode','=',$id)->update([
             'BookTypeCode'=>$request->BookTypeCode,
-            'BookTypeName'=>$request->BookTypeName
+            'BookTypeName'=>$request->BookTypeName,
+            'Rate'=>$request->Rate
         ]);
             return redirect('booktype');
     }
@@ -101,4 +105,10 @@ class BookTypeController extends Controller
         DB::table("BookType")->where('BookTypeCode',"=",$id)->delete();
         return redirect('booktype');
     }
+    public function CheckRate(Request $request)
+    {  
+        DB::Statement('call CheckRate(?)',array($request->BookTypeCode));             
+        return redirect('booktype');
+    }
+    
 }

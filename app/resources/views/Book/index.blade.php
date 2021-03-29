@@ -15,7 +15,7 @@
                     <br><br>
                     <div align="center">
                         <label for="page">Choose a page :</label>
-                        <select name="forma" onchange="location = this.value;">
+                        <select name="fom" onchange="location = this.value;">
                             <option value="">- Choose -</option>
                             <option value="member">Member</option>
                             <option value="book">Book</option>
@@ -26,16 +26,17 @@
                         <select name="forma" onchange="location = this.value;">
                             <option value="">- About -</option>
                             <option value="book">Book</option>
-                            <option value="booktype">Book Type</option>
+                            <option value="booktype">BookType</option>
                         </select>
                     </div>
+
                     <br><br>
                     <table border=1 align="center">
                         <font size=7><B><u>Book</u></B></font>
                         <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         <a class="btn btn-primary" href="{{ route('book.create') }}">Create Book</a>
                         <br><br>
-                        
+
                         <tr align="center">
                             <td width="100">CodeBook</td>
                             <td width="200">BookName</td>

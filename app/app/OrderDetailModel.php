@@ -8,6 +8,8 @@ class OrderDetailModel extends Model
 {
     protected $table="OrderDetail";
     protected $fillable=[
-        'OrderNumber','TUnit','TPrice''DateOrder'
+        'Mem_ID','OrderNumber','TUnit','TPrice',
+        'BookCode','BookName','BookPrice','Delivered'
+
     ];
 }

@@ -1,7 +1,7 @@
-@extends('Book.layout')
+@extends('Order.layout')
 
 @section('content')
-@foreach($book as $B)
+@foreach($order as $OR)
 @endforeach
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,47 +14,42 @@
             <div class="panel-heading">
                 <font face="Prompt">
                     <br><br>
-                    <font size=7><B>Edit Book</B></font><br>
-                    <form action="{{ route('book.update',$B->BookCode) }}" method="POST">
+                    <font size=7><B>Edit Order</B></font><br>
+                    <form action="{{ route('order.update',$OR->OrderNumber) }}" method="POST">
                         @csrf
                         @method("PUT")
                         <table height="400" width="800">
                             <tr>
-                                <td border=1> CodeBook : </td>
-                                <td><input type=text name=BookCode value="{{ $B->BookCode }}" style="width:500px;"></td>
+                                <td> Member : </td>
+                                <td><input type=text name=Mem_ID value="{{ $OR->Mem_ID }}" style="width:500px;" readonly></td>
                             </tr>
                             <tr>
-                                <td> BookName : </td>
-                                <td><input type=text name=BookName value="{{ $B->BookName }}" style="width:500px;"></td>
+                                <td> Order Number : </td>
+                                <td><input type=text name=OrderNumber value="{{ $OR->OrderNumber }}" style="width:500px;" readonly></td>
                             </tr>
                             <tr>
-                                <td> BoookTypeID : </td>
-                                <td><input type=text name=BookTypeCode value="{{ $B->BookTypeCode }}"
+                                <td> Book Code : </td>
+                                <td><input type=text name=BookCodeO value="{{ $OR->BookCodeO }}"
                                         style="width:500px;"></td>
                             </tr>
                             <tr>
-                                <td> Price : </td>
-                                <td><input type=text name=BookPrice value="{{ $B->BookPrice }}" style="width:500px;">
+                                <td> Book Name : </td>
+                                <td><input type=text value="{{ $OR->BookName }}" style="width:500px;" readonly>
                                 </td>
                             </tr>
                             <tr>
-                                <td> Stock : </td>
-                                <td><input type=text name=BookStock value="{{ $B->BookStock }}" style="width:500px;">
+                                <td> Book Price : </td>
+                                <td><input type=text value="{{ $OR->BookPrice }}" style="width:500px;" readonly>
                                 </td>
                             </tr>
                             <tr>
-                                <td> Author : </td>
-                                <td><input type=text name=BooktAuthor value="{{ $B->BooktAuthor }}"
-                                        style="width:500px;"></td>
+                                <td> Order Uint : </td>
+                                <td><input type=text name=OrderUint value="{{ $OR->OrderUint }}" style="width:500px;"></td>
                             </tr>
-                            <tr>
-                                <td> Note : </td>
-                                <td><input type=text name=BookNote value="{{ $B->BookNote }}" style="width:600px; ">
-                                </td>
-                            </tr>
+
                             <tr align="center">
                                 <td colspan=2>
-                                    <button class="btn btn-primary" href="{{ route('book.index') }}">Cancel</button>
+                                    <button class="btn btn-primary" href="{{ route('order.index') }}">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Edit</button>
                                 </td>
                             </tr>

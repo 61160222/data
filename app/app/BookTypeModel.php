@@ -8,6 +8,6 @@ class BookTypeModel extends Model
 {
     protected $table="BookType";
     protected $fillable=[
-    'BookTypeCode','BookTypeName '
+    'BookTypeCode','BookTypeName ','Rate '
     ];
 }

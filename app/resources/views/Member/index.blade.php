@@ -15,7 +15,7 @@
                     <br><br>
                     <div align="center">
                         <label for="page">Choose a page :</label>
-                        <select name="forma" onchange="location = this.value;">
+                        <select name="fom" onchange="location = this.value;">
                             <option value="">- Choose -</option>
                             <option value="member">Member</option>
                             <option value="book">Book</option>

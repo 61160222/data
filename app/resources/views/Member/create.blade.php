@@ -51,6 +51,7 @@
                                 <td><input type=text name=IDCard style="width:500px; ">
                                 </td>
                             </tr>
+                            
                             <tr align="center">
                                 <td colspan=2>
                                     <button class="btn btn-primary" href="{{ route('member.index') }}">Cancel</button>

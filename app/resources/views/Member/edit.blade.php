@@ -25,7 +25,8 @@
                             </tr>
                             <tr>
                                 <td> Username : </td>
-                                <td><input type=text name=Username value="{{ $Mem->Username }}" style="width:500px;"></td>
+                                <td><input type=text name=Username value="{{ $Mem->Username }}" style="width:500px;">
+                                </td>
                             </tr>
                             <tr>
                                 <td> BoookTypeID : </td>
@@ -43,7 +44,8 @@
                             </tr>
                             <tr>
                                 <td> Telphephon : </td>
-                                <td><input type=text name=Telphephon value="{{ $Mem->Telphephon }}" style="width:500px;"></td>
+                                <td><input type=text name=Telphephon value="{{ $Mem->Telphephon }}"
+                                        style="width:500px;"></td>
                             </tr>
                             <tr>
                                 <td> E-mail : </td>
@@ -55,6 +57,7 @@
                                 <td><input type=text name=IDCard value="{{ $Mem->IDCard }}" style="width:500px; ">
                                 </td>
                             </tr>
+                            
                             <tr align="center">
                                 <td colspan=2>
                                     <button class="btn btn-primary" href="{{ route('member.index') }}">Cancel</button>

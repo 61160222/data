@@ -14,8 +14,12 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-       $orderdetail = DB::table('OrderDetail')->get();
+       $orderdetail = DB::table('OrderDetail')
+       ->join('Orders','orderdetail.OrderNumber','=','Orders.OrderNumber')
+       ->join('Member','orders.Mem_ID','=','Member.Mem_ID')
+        ->get();
        return view('orderdetail.index',compact('orderdetail'));
+
     }
 
     /**
@@ -36,17 +40,18 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'OrderNumber'=>'required',
-            'TUnit'=>'required',
-            'TPrice'=>'required',
-            'DateOrder'=>'required',
-        ]);
+        // $request->validate([
+        //     'OrderNumber'=>'required',
+        //     'TUnit'=>'required',
+        //     'TPrice'=>'required',
+        //     'DateOrder'=>'required',
+            //  'OrderNumber'=>'required'
+        // ]);
         DB::table('OrderDetail')->insert([
+            // 'Mem_ID'=>$request->Mem_ID
             'OrderNumber'=>$request->OrderNumber,
-            'TUnit'=>$request->TUnit,
-            'TPrice'=>$request->TPrice,
-            'DateOrder'=>$request->DateOrder
+            'Delivered'=>$request->Delivered
+
         ]);
         return redirect('orderdetail');
     }
@@ -59,7 +64,13 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
-        //
+    //     $orderdetail = DB::table('OrderDetail')
+    //     ->join('Orders','orders.OrderNumber','=','orderdetail.OrderNumber')
+    //     ->join('Book','book.BookCode','=','orderdetail.BookCode')
+    //     ->join('Member','member.Mem_ID','=','orderdetail.Mem_ID')
+    //     ->where('OrderDetail.OrderNumber',"=",$id)
+    //     ->get();
+    //    return view('orderdetail.show',compact('orderdetail'));
     }
 
     /**
@@ -83,17 +94,16 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'OrderNumber'=>'required',
-            'TUnit'=>'required',
-            'TPrice'=>'required',
-            'DateOrder'=>'required',
-        ]);
+        // $request->validate([
+        //     'OrderNumber'=>'required',
+        //     'TUnit'=>'required',
+        //     'TPrice'=>'required',
+        //     'DateOrder'=>'required',
+        // ]);
         DB::table('OrderDetail')->where('OrderNumber','=',$id)->update([
+            'Mem_ID'=>$request->Mem_ID,
             'OrderNumber'=>$request->OrderNumber,
-            'TUnit'=>$request->TUnit,
-            'TPrice'=>$request->TPrice,
-            'DateOrder'=>$request->DateOrder
+            'Delivered'=>$request->Delivered
         ]);
             return redirect('orderdetail');
     }
@@ -109,4 +119,11 @@ class OrderDetailController extends Controller
         DB::table("OrderDetail")->where('OrderNumber',"=",$id)->delete();
         return redirect('orderdetail');
     }
+
+    public function INDelivered(Request $request)
+    {  
+        DB::Statement('call INDelivered(?)',array($request->OrderNumber));             
+        return redirect('orderdetail');
+    }
+
 }

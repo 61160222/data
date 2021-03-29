@@ -16,7 +16,7 @@
                         @csrf
                         <table height="400" width="800">
                             <tr>
-                                <td> Mem_ID : </td>
+                                <td> Member : </td>
                                 <td><input type=text name=Mem_ID style="width:500px;"></td>
                             </tr>
                             <tr>
@@ -24,22 +24,20 @@
                                 <td><input type=text name=OrderNumber style="width:500px;"></td>
                             </tr>
                             <tr>
-                                <td border=1> CodeBook : </td>
-                                <td><input type=text name=BookCode style="width:500px;"></td>
+                                <td> CodeBook : </td>
+                                <td><input type=text name=BookCodeO style="width:500px;"></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td> BookName : </td>
                                 <td><input type=text name=BookName style="width:500px;"></td>
                             </tr>
                             <tr>
                                 <td> Price : </td>
-                                <td><input type=text name=BookPrice style="width:500px;">
-                                </td>
-                            </tr>
+                                <td><input type=text name=BookPrice style="width:500px;"></td>
+                            </tr> -->
                             <tr>
                                 <td> Unit : </td>
-                                <td><input type=text name=OrderUint style="width:500px;">
-                                </td>
+                                <td><input type=text name=OrderUint style="width:500px;"></td>
                             </tr>
                             <tr align="center">
                                 <td colspan=2>

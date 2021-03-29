@@ -14,7 +14,9 @@ class TransferController extends Controller
      */
     public function index()
     {
-       $transfer = DB::table('Transfer')->get();
+       $transfer = DB::table('Transfer')
+       ->join('order','order.OrderNumber','=','transfer.TransferOrder')
+       ->get();
        return view('transfer.index',compact('transfer'));
     }
 
@@ -72,7 +74,7 @@ class TransferController extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('Transfer')->where('TransferOrder','=',$id)->get();
+        $transfer = DB::table('Transfer')->where('TransferOrder','=',$id)->get();
         return view('transfer.edit',compact('transfer'));
     }
 

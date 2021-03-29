@@ -14,9 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-       $order = DB::table('Order')
-        ->join('member','member.Mem_ID','=','order.Mem_ID')
-        ->join('book','book.BookCode','=','order.BookCode')
+       $order = DB::table('Orders')
+        ->join('book','book.BookCode','=','orders.BookCodeO')
+        ->join('member','member.Mem_ID','=','orders.Mem_ID')
         ->get();
         return view('order.index',compact('order'));
     }
@@ -39,21 +39,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'Mem_ID'=>'required',
-            'OrderNumber'=>'required',
-            'BookCode'=>'BookCode',
-            'BookName'=>'required',
-            'BookPrice'=>'required',
-            'OrderUnit'=>'required'
-        ]);
-        DB::table('Order')->insert([
-            'Mem_ID'=>'required',
+        // $request->validate([
+        //     'Mem_ID'=>'required',
+        //     'OrderNumber'=>'required',
+        //     'BookCode'=>'BookCode',
+        //     'BookName'=>'required',
+        //     'BookPrice'=>'required',
+        //     'OrderUint'=>'required'
+        // ]);
+        DB::table('Orders')->insert([
+            'Mem_ID'=>$request->Mem_ID,
             'OrderNumber'=>$request->OrderNumber,
-            'BookCode'=>$request->BookCode,
-            'BookName'=>$request->BookName,
-            'BookPrice'=>$request->BookPrice,
-            'OrderUnit'=>$request->OrderUnit
+            'OrderUint'=>$request->OrderUint,
+            'BookCodeO'=>$request->BookCodeO
         ]);
         return redirect('order');
     }
@@ -77,7 +75,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $account = DB::table('Order')->where('OrderNumber','=',$id)->get();
+        $order = DB::table('Orders')
+        ->join('book','book.BookCode','=','orders.BookCodeO')
+        ->where('OrderNumber','=',$id)
+        ->get();
+
         return view('order.edit',compact('order'));
     }
 
@@ -90,22 +92,21 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'Mem_ID'=>'required',
-            'OrderNumber'=>'required',
-            'BookCode'=>'BookCode',
-            'BookName'=>'required',
-            'BookPrice'=>'required',
-            'OrderUnit'=>'required'
-        ]);
-        DB::table('Order')->where('OrderNumber','=',$id)->update([
-            'Mem_ID'=>'required',
+        // $request->validate([
+        //     'Mem_ID'=>'required',
+        //     'OrderNumber'=>'required',
+        //     'BookCode'=>'BookCode',
+        //     'BookName'=>'required',
+        //     'BookPrice'=>'required',
+        //     'OrderUint'=>'required'
+        // ]);
+        DB::table('Orders')->where('OrderNumber','=',$id)->update([
+            'Mem_ID'=>$request->Mem_ID,
             'OrderNumber'=>$request->OrderNumber,
-            'BookCode'=>$request->BookCode,
-            'BookName'=>$request->BookName,
-            'BookPrice'=>$request->BookPrice,
-            'OrderUnit'=>$request->OrderUnit
+            'OrderUint'=>$request->OrderUint,
+            'BookCodeO'=>$request->BookCodeO
         ]);
+    
             return redirect('order');
     }
 
@@ -117,7 +118,18 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("Order")->where('OrderNumber',"=",$id)->delete();
+        DB::table("Orders")->where('OrderNumber',"=",$id)->delete();
         return redirect('order');
     }
+
+    public function CalculatePrice()
+    {
+        $order = DB::table("Orders")->get();
+        foreach ($order as $OR)
+        {
+            DB::select('call CalculatePrice(?)',array($OR->OrderNumber));
+        }
+        return redirect('order');
+    }
+
 }

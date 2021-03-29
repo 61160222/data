@@ -21,11 +21,25 @@
                         <table height="400" width="800">
                             <tr>
                                 <td border=1> Book Type Code : </td>
-                                <td><input type=text name=BookTypeCode value="{{ $BT->BookTypeCode }}" style="width:500px;"></td>
+                                <td><input type=text name=BookTypeCode value="{{ $BT->BookTypeCode }}"
+                                        style="width:500px;"></td>
                             </tr>
                             <tr>
                                 <td> BookTypeName : </td>
-                                <td><input type=text name=BookTypeName value="{{ $BT->BookTypeName }}" style="width:500px;"></td>
+                                <td><input type=text name=BookTypeName value="{{ $BT->BookTypeName }}"
+                                        style="width:500px;"></td>
+                            </tr>
+                            <tr>
+                                <td> Rate : </td>
+                                <td><input type="radio" name=Rate value="{{ $BT->Rate }}">
+                                    <label for="G">General </label>
+                                    <input type="radio" name=Rate value="{{ $BT->Rate }}">
+                                    <label for="PG">Parental Guidance</label>
+                                    <input type="radio" name=Rate value="{{ $BT->Rate }}">
+                                    <label for="R">Restricted </label>
+                                    <input type="radio" name=Rate value="{{ $BT->Rate }}">
+                                    <label for="NC">No one 17 and under admitted</label>
+                                </td>
                             </tr>
                             <tr align="center">
                                 <td colspan=2>

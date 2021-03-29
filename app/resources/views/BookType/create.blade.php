@@ -23,6 +23,18 @@
                                 <td> Book Type Name : </td>
                                 <td><input type=text name=BookTypeName style="width:500px;"></td>
                             </tr>
+                            <tr>
+                                <td> Rate : </td>
+                                <td><input type="radio" name=Rate value="G">
+                                    <label for="G">General </label>&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name=Rate value="PG">
+                                    <label for="PG">Parental Guidance</label>&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name=Rate value="R">
+                                    <label for="R">Restricted </label>&nbsp;&nbsp;&nbsp;<br>
+                                    <input type="radio" name=Rate value="NC">
+                                    <label for="NC">No one 17 and under admitted</label>
+                                </td>
+                            </tr>
                             <tr align="center">
                                 <td colspan=2>
                                     <button class="btn btn-primary" href="{{ route('booktype.index') }}">Cancel</button>

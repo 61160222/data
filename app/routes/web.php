@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('orders/calculateprice','OrderController@CalculatePrice')->name('order.calculateprice');
+Route::get('orderdetail/indelivered','OrderDetailController@INDelivered')->name('orderdetail.indelivered');
+Route::get('booktype/checkrate','BookTypeController@CheckRate')->name('booktype.checkrate');
+
 
 Route::resource('book','BookController');
 Route::get('/', function () {
@@ -37,6 +41,10 @@ Route::resource('orderdetail','OrderDetailController');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('orderlist','OrderListController');
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::resource('transfer','TransferController');
 Route::get('/', function () {
     return view('welcome');
@@ -45,4 +53,5 @@ Route::resource('shopping','ShoppingController');
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/home', 'HomeController@index')->name('home');
